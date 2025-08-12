@@ -16,7 +16,7 @@ const contactFormSchema = z.object({
   website: z.string().optional(),
 });
 
-// Rate limiting for contact form
+// Rate limiting for contact form with Vercel proxy support
 const contactRateLimit = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 5, // limit each IP to 5 requests per windowMs
@@ -26,6 +26,14 @@ const contactRateLimit = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
+  keyGenerator: (req) => {
+    // Use X-Forwarded-For header in production, fallback to IP
+    const forwarded = req.headers['x-forwarded-for'];
+    if (forwarded && typeof forwarded === 'string') {
+      return forwarded.split(',')[0].trim();
+    }
+    return req.ip || req.connection.remoteAddress || 'unknown';
+  }
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {

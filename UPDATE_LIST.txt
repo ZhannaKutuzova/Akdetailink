@@ -1,0 +1,47 @@
+📋 СПИСОК ФАЙЛОВ ДЛЯ ОБНОВЛЕНИЯ В GITHUB
+
+═══════════════════════════════════════════════════════════════
+
+🔥 КРИТИЧЕСКИ ВАЖНЫЕ ФАЙЛЫ (обязательно обновить):
+
+📁 api/
+  └── index.ts ← НОВЫЙ серверный файл для Vercel
+
+📁 server/
+  └── routes.ts ← Исправлен rate limiting для Vercel
+
+📁 client/src/pages/
+  └── Contact.tsx ← Возвращена серверная отправка формы
+
+📄 package.json ← Добавлен @vercel/node dependency
+📄 vercel.json ← Настроен для serverless functions
+
+═══════════════════════════════════════════════════════════════
+
+📁 ОСТАЛЬНЫЕ ПАПКИ (можно оставить как есть, но лучше обновить):
+
+📁 client/ - вся папка целиком
+📁 server/ - вся папка целиком  
+📁 shared/ - схемы базы данных
+📁 migrations/ - если есть
+
+═══════════════════════════════════════════════════════════════
+
+⚡ МИНИМАЛЬНОЕ ОБНОВЛЕНИЕ (если спешите):
+
+1. Замените файл: api/index.ts
+2. Замените файл: server/routes.ts  
+3. Замените файл: client/src/pages/Contact.tsx
+4. Замените файл: package.json
+5. Замените файл: vercel.json
+
+═══════════════════════════════════════════════════════════════
+
+🎯 ПОСЛЕ ЗАГРУЗКИ В GITHUB:
+
+Добавьте в Vercel Dashboard Environment Variables:
+- DATABASE_URL
+- TELEGRAM_BOT_TOKEN = 8044509387:AAE6Z3CkrOn0Qykr8a_SuTvQzT23QJCCBsg
+- TELEGRAM_CHAT_ID = 197840565
+
+Затем сделайте Redeploy в Vercel.

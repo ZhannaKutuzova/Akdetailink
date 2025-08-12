@@ -6,6 +6,9 @@ import { registerRoutes } from "../server/routes";
 
 const app = express();
 
+// Trust proxy for Vercel
+app.set('trust proxy', 1);
+
 // Security middleware for Vercel
 app.use(helmet({
   crossOriginEmbedderPolicy: false,
@@ -16,12 +19,21 @@ app.use(compression());
 // CORS for Vercel deployment
 app.use((req, res, next) => {
   const origin = req.headers.origin;
-  if (origin && (origin.includes('.vercel.app') || origin.includes('akdetailing'))) {
-    res.header('Access-Control-Allow-Origin', origin);
+  
+  // Allow same-origin and Vercel deployments
+  if (!origin || origin.includes('.vercel.app') || origin.includes('akdetailing') || origin.includes('localhost')) {
+    res.header('Access-Control-Allow-Origin', origin || '*');
   }
+  
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-admin-key');
   res.header('Access-Control-Allow-Credentials', 'true');
+  
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  
   next();
 });
 
