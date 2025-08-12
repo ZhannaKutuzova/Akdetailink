@@ -8,9 +8,7 @@
     }
   },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/dist/public/$1" }
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
