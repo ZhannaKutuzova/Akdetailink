@@ -2,31 +2,15 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
-  "installCommand": "npm install",
   "functions": {
-    "api/index.ts": {
-      "runtime": "@vercel/node"
+    "api/**/*.{js,ts}": {
+      "runtime": "nodejs20.x"
     }
   },
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api"
-    },
-    {
-      "source": "/healthz",
-      "destination": "/api"
-    },
-    {
-      "source": "/readyz", 
-      "destination": "/api"
-    },
-    {
-      "source": "/((?!api|healthz|readyz).*)",
-      "destination": "/dist/public/$1"
-    }
+    { "source": "/api/(.*)", "destination": "/api" }
   ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "routes": [
+    { "src": "/(.*)", "dest": "/dist/public/$1" }
+  ]
 }
