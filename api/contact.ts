@@ -84,16 +84,22 @@ async function sendTelegramNotification(contactData: any) {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // Enhanced CORS headers for Vercel
+  const origin = req.headers.origin;
+  res.setHeader('Access-Control-Allow-Origin', origin || '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  
+  // Log for debugging
+  console.log(`${req.method} /api/contact from ${origin || 'unknown'}`);
   
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
   if (req.method !== 'POST') {
+    console.log('Method not allowed:', req.method);
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
 
@@ -103,7 +109,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                (req.headers['x-real-ip'] as string) || 
                'unknown';
     
+    console.log('Request IP:', ip);
+    console.log('Request body:', req.body);
+    
     if (!checkRateLimit(ip)) {
+      console.log('Rate limit exceeded for IP:', ip);
       return res.status(429).json({
         success: false,
         message: 'Too many requests. Please try again later.'
@@ -111,6 +121,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // Validate request body
+    if (!req.body) {
+      console.log('Empty request body');
+      return res.status(400).json({
+        success: false,
+        message: 'Request body is required'
+      });
+    }
+
     const validatedData = contactFormSchema.parse(req.body);
 
     // Check honeypot
@@ -148,6 +166,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.error('Contact form error:', error);
     
     if (error instanceof z.ZodError) {
+      console.log('Validation errors:', error.errors);
       return res.status(400).json({
         success: false,
         message: 'Invalid form data',
@@ -157,7 +176,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return res.status(500).json({
       success: false,
-      message: 'Internal server error'
+      message: 'Internal server error',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 }
