@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 10%);
+  --card: hsl(0 0% 98%);
+  --card-foreground: hsl(0 0% 10%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 10%);
+  --primary: hsl(203.8863 88.2845% 53.1373%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(0 0% 10%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(210 40% 96%);
+  --muted-foreground: hsl(215.4 16.3% 46.9%);
+  --accent: hsl(42.0290 92.8251% 56.2745%);
+  --accent-foreground: hsl(0 0% 10%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(214.3 31.8% 91.4%);
+  --input: hsl(214.3 31.8% 91.4%);
+  --ring: hsl(203.8863 88.2845% 53.1373%);
+  --radius: 0.75rem;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-nav: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* Custom styles for Bebas Neue font */
+.font-display {
+  font-family: var(--font-display);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.font-bold, .font-semibold {
+  font-family: var(--font-display);
+}
+
+/* Navigation styles */
+nav {
+  font-family: var(--font-nav);
+  font-weight: 600;
+}
+
+nav a, nav button {
+  font-family: var(--font-nav);
+  font-weight: 600;
+}
+
+/* Use geometric Montserrat for prominent UI elements */
+p, .text-lg, .text-xl, .card-content, button:not(nav button) {
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+/* Keep Inter for body text and small text */
+.text-sm, .text-xs, .prose {
+  font-family: var(--font-body);
+}
+
+.dark {
+  --background: hsl(0 0% 0%);
+  --foreground: hsl(0 0% 95%);
+  --card: hsl(0 0% 5%);
+  --card-foreground: hsl(0 0% 95%);
+  --popover: hsl(0 0% 0%);
+  --popover-foreground: hsl(0 0% 95%);
+  --primary: hsl(203.8863 88.2845% 53.1373%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(0 0% 15%);
+  --secondary-foreground: hsl(0 0% 95%);
+  --muted: hsl(0 0% 10%);
+  --muted-foreground: hsl(215.4 16.3% 56.9%);
+  --accent: hsl(42.0290 92.8251% 56.2745%);
+  --accent-foreground: hsl(0 0% 10%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(0 0% 15%);
+  --input: hsl(0 0% 15%);
+  --ring: hsl(203.8863 88.2845% 53.1373%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom styles for Steam Pro Mobile Detailing */
+.hero-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
