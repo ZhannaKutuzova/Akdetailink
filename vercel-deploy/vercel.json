@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "buildCommand": "vite build",
+  "outputDirectory": "dist/public",
+  "functions": {
+    "api/index.ts": {
+      "runtime": "@vercel/node@20.11.1"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/healthz",
+      "destination": "/api"
+    },
+    {
+      "source": "/readyz",
+      "destination": "/api"
+    },
+    {
+      "source": "/((?!api|healthz|readyz).*)",
+      "destination": "/api"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
