@@ -18,12 +18,12 @@
       "destination": "/api"
     },
     {
-      "source": "/readyz", 
+      "source": "/readyz",
       "destination": "/api"
     },
     {
       "source": "/((?!api|healthz|readyz).*)",
-      "destination": "/dist/public/$1"
+      "destination": "/api"
     }
   ],
   "env": {

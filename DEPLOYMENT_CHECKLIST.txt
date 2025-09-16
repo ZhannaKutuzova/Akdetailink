@@ -1,0 +1,84 @@
+✅ CHECKLIST ДЛЯ VERCEL DEPLOYMENT
+
+═══════════════════════════════════════════════════════════════
+
+📋 ПЕРЕД ДЕПЛОЕМ:
+
+□ Все файлы из github-root-files/ загружены в GitHub
+□ api/index.ts присутствует в корне репозитория
+□ vercel.json настроен на serverless функции
+□ package.json содержит @vercel/node dependency
+□ Структура: api/, client/, server/, shared/ в корне
+
+═══════════════════════════════════════════════════════════════
+
+⚙️ НАСТРОЙКИ VERCEL PROJECT:
+
+□ Framework Preset: Other
+□ Root Directory: ./ (корень репозитория)
+□ Build Command: npm run build
+□ Output Directory: dist/public  
+□ Install Command: npm install
+□ Node.js Version: 18.x
+
+═══════════════════════════════════════════════════════════════
+
+🔑 ENVIRONMENT VARIABLES:
+
+□ TELEGRAM_BOT_TOKEN = 8044509387:AAE6Z3CkrOn0Qykr8a_SuTvQzT23QJCCBsg
+□ TELEGRAM_CHAT_ID = 197840565
+□ NODE_ENV = production
+□ DATABASE_URL = (если нужна база данных)
+
+═══════════════════════════════════════════════════════════════
+
+🚀 ПОСЛЕ ДЕПЛОЯ:
+
+□ Сайт открывается без ошибок
+□ Контактная форма загружается
+□ Function Logs показывают успешный запуск API
+□ Тест формы: заполнить и отправить
+□ Проверить Telegram уведомления
+□ Проверить /healthz endpoint
+
+═══════════════════════════════════════════════════════════════
+
+🔍 ТЕСТИРОВАНИЕ API:
+
+□ GET https://ваш-домен.vercel.app/healthz
+   Ожидаемый ответ: {"status":"ok","timestamp":"..."}
+
+□ POST https://ваш-домен.vercel.app/api/contact
+   С данными: {"name":"Test","phone":"123","email":"test@test.com"}
+   Ожидаемый ответ: {"success":true,"message":"Contact form submitted successfully"}
+
+□ Telegram уведомление приходит в чат
+
+═══════════════════════════════════════════════════════════════
+
+❌ TROUBLESHOOTING:
+
+Проблема: Function не запускается
+Решение: Проверьте что api/index.ts в корне репозитория
+
+Проблема: Форма показывает ошибку
+Решение: Проверьте Function Logs в Vercel Dashboard
+
+Проблема: Telegram не приходит  
+Решение: Проверьте Environment Variables
+
+Проблема: 404 на /api/contact
+Решение: Проверьте vercel.json rewrites конфигурацию
+
+═══════════════════════════════════════════════════════════════
+
+📞 ФИНАЛЬНЫЙ ТЕСТ:
+
+1. Откройте сайт в браузере
+2. Перейдите на страницу Contact
+3. Заполните форму полностью
+4. Нажмите "Send Message"  
+5. Ожидайте "Message Sent!" уведомление
+6. Проверьте Telegram на новое сообщение
+
+✅ Если все прошло успешно - деплой завершен!

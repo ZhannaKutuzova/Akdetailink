@@ -1,0 +1,157 @@
+🚀 ПОЛНАЯ КОНФИГУРАЦИЯ ДЛЯ VERCEL DEPLOYMENT
+
+═══════════════════════════════════════════════════════════════
+
+📋 1. СТРУКТУРА ФАЙЛОВ В GITHUB РЕПОЗИТОРИИ:
+
+/
+├── api/
+│   └── index.ts                 ← Serverless Express функция
+├── client/                      ← React frontend 
+├── server/                      ← Backend логика
+├── shared/                      ← Общие схемы
+├── package.json                 ← Зависимости с @vercel/node
+├── vercel.json                  ← Конфигурация Vercel
+├── tsconfig.json
+├── vite.config.ts
+└── tailwind.config.ts
+
+═══════════════════════════════════════════════════════════════
+
+⚙️ 2. VERCEL PROJECT SETTINGS:
+
+Framework Preset: Other
+Root Directory: ./
+Build Command: npm run build  
+Output Directory: dist/public
+Install Command: npm install
+Node.js Version: 18.x (рекомендуется)
+
+═══════════════════════════════════════════════════════════════
+
+🔑 3. ENVIRONMENT VARIABLES:
+
+Добавить в Vercel Dashboard → Settings → Environment Variables:
+
+Name: TELEGRAM_BOT_TOKEN
+Value: 8044509387:AAE6Z3CkrOn0Qykr8a_SuTvQzT23QJCCBsg
+
+Name: TELEGRAM_CHAT_ID  
+Value: 197840565
+
+Name: NODE_ENV
+Value: production
+
+(Опционально для базы данных):
+Name: DATABASE_URL
+Value: ваша PostgreSQL connection string
+
+═══════════════════════════════════════════════════════════════
+
+📄 4. КОНФИГУРАЦИОННЫЕ ФАЙЛЫ:
+
+А) vercel.json:
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/public", 
+  "installCommand": "npm install",
+  "functions": {
+    "api/index.ts": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/healthz",
+      "destination": "/api" 
+    },
+    {
+      "source": "/readyz",
+      "destination": "/api"
+    },
+    {
+      "source": "/((?!api|healthz|readyz).*)",
+      "destination": "/dist/public/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
+
+Б) package.json (ключевые зависимости):
+{
+  "dependencies": {
+    "@vercel/node": "^3.0.0",
+    "express": "^4.18.0",
+    "zod": "^3.22.0"
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "tsx server/index.ts"
+  }
+}
+
+═══════════════════════════════════════════════════════════════
+
+🔧 5. ПОШАГОВЫЙ DEPLOYMENT:
+
+1️⃣ ПОДГОТОВКА РЕПОЗИТОРИЯ:
+   - Загрузите все файлы из github-root-files/
+   - Убедитесь что api/index.ts и vercel.json на месте
+
+2️⃣ VERCEL SETUP:
+   - Подключите GitHub репозиторий
+   - Выберите Framework: Other
+   - Root Directory: ./
+   - Build Command: npm run build
+   - Output Directory: dist/public
+
+3️⃣ ENVIRONMENT VARIABLES:
+   - Добавьте TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID
+   - Добавьте NODE_ENV = production
+
+4️⃣ DEPLOY:
+   - Нажмите Deploy
+   - Дождитесь успешной сборки
+
+5️⃣ ТЕСТИРОВАНИЕ:
+   - Откройте сайт
+   - Заполните контактную форму
+   - Проверьте Telegram уведомления
+
+═══════════════════════════════════════════════════════════════
+
+✅ РЕЗУЛЬТАТ:
+
+🌐 Frontend: React SPA с формами
+🚀 Backend: Express.js serverless API  
+📱 Notifications: Telegram уведомления
+📊 Database: PostgreSQL (опционально)
+
+URL Structure:
+- / → React приложение
+- /api/contact → Contact form handler
+- /api/admin/contacts → Admin panel (с API ключом)
+- /healthz → Health check
+- /readyz → Database connectivity check
+
+═══════════════════════════════════════════════════════════════
+
+🔍 ДИАГНОСТИКА ПРОБЛЕМ:
+
+Если форма не работает:
+1. Проверьте Function Logs в Vercel Dashboard
+2. Убедитесь что Environment Variables добавлены
+3. Проверьте что api/index.ts развернут как функция
+4. Тестируйте напрямую: POST /api/contact
+
+Если Telegram не приходит:
+1. Проверьте TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID
+2. Убедитесь что бот добавлен в чат
+3. Проверьте Function Logs на ошибки
