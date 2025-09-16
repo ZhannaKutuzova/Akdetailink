@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { z } from "zod";
-import rateLimit from "express-rate-limit";
+import rateLimit, { ipKeyGenerator } from "express-rate-limit";
 import { storage } from "./storage";
 import { sendTelegramNotification } from "./telegram";
 
@@ -27,12 +27,14 @@ const contactRateLimit = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   keyGenerator: (req) => {
-    // Use X-Forwarded-For header in production, fallback to IP
+    // Use X-Forwarded-For header in production, fallback to IP with IPv6 support
     const forwarded = req.headers['x-forwarded-for'];
     if (forwarded && typeof forwarded === 'string') {
-      return forwarded.split(',')[0].trim();
+      const ip = forwarded.split(',')[0].trim();
+      return ipKeyGenerator(ip);
     }
-    return req.ip || req.connection.remoteAddress || 'unknown';
+    const ip = req.ip || req.connection?.remoteAddress || 'unknown';
+    return ipKeyGenerator(ip);
   }
 });
 
