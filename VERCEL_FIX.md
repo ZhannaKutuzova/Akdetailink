@@ -6,9 +6,26 @@
 Code: FUNCTION_INVOCATION_FAILED
 ```
 
+**Причина:** Serverless функция пыталась импортировать `server/routes.ts` который создает HTTP сервер. В Vercel serverless functions не нужен HTTP сервер - только Express app.
+
 ## Решение
 
-### 1. Обновлен vercel.json
+### 1. Переписан api/index.ts
+
+**Было:** Импорт из `server/routes.ts` и создание HTTP сервера
+```typescript
+import { registerRoutes } from "../server/routes";
+registerRoutes(app); // Возвращает Server
+```
+
+**Стало:** Независимый serverless endpoint
+```typescript
+// Все routes определены прямо в api/index.ts
+// Telegram встроен напрямую
+// Нет зависимостей от server/
+```
+
+### 2. Обновлен vercel.json
 
 **Было:**
 ```json
