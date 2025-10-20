@@ -27,7 +27,8 @@ const Contact = () => {
     name: "",
     phone: "",
     email: "",
-    vehicle: "",
+    vehicleType: "",
+    vehicleMake: "",
     service: "",
     message: "",
     website: "" // Honeypot field
@@ -46,7 +47,8 @@ const Contact = () => {
         name: "",
         phone: "",
         email: "",
-        vehicle: "",
+        vehicleType: "",
+        vehicleMake: "",
         service: "",
         message: "",
         website: ""
@@ -91,6 +93,7 @@ const Contact = () => {
                     <Label htmlFor="name">Name *</Label>
                     <Input
                       id="name"
+                      data-testid="input-name"
                       type="text"
                       placeholder="Your name"
                       value={formData.name}
@@ -102,6 +105,7 @@ const Contact = () => {
                     <Label htmlFor="phone">Phone *</Label>
                     <Input
                       id="phone"
+                      data-testid="input-phone"
                       type="tel"
                       placeholder="Your phone number"
                       value={formData.phone}
@@ -111,26 +115,43 @@ const Contact = () => {
                   </div>
                 </div>
 
+                <div>
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    data-testid="input-email"
+                    type="email"
+                    placeholder="Your email (optional)"
+                    value={formData.email}
+                    onChange={(e) => handleChange("email", e.target.value)}
+                  />
+                </div>
+
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="email">Email *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="Your email"
-                      value={formData.email}
-                      onChange={(e) => handleChange("email", e.target.value)}
-                      required
-                    />
+                    <Label htmlFor="vehicleType">Vehicle Type</Label>
+                    <Select value={formData.vehicleType} onValueChange={(value) => handleChange("vehicleType", value)}>
+                      <SelectTrigger data-testid="select-vehicle-type">
+                        <SelectValue placeholder="Select vehicle type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="suv">SUV</SelectItem>
+                        <SelectItem value="sedan">Sedan</SelectItem>
+                        <SelectItem value="coupe">Coupe</SelectItem>
+                        <SelectItem value="truck">Truck</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div>
-                    <Label htmlFor="vehicle">Vehicle</Label>
+                    <Label htmlFor="vehicleMake">Vehicle Make (optional)</Label>
                     <Input
-                      id="vehicle"
+                      id="vehicleMake"
+                      data-testid="input-vehicle-make"
                       type="text"
-                      placeholder="Year, Make, Model"
-                      value={formData.vehicle}
-                      onChange={(e) => handleChange("vehicle", e.target.value)}
+                      placeholder="e.g., Toyota, BMW, Tesla"
+                      value={formData.vehicleMake}
+                      onChange={(e) => handleChange("vehicleMake", e.target.value)}
                     />
                   </div>
                 </div>
@@ -138,10 +159,13 @@ const Contact = () => {
                 <div>
                   <Label htmlFor="service">Service Interested In</Label>
                   <Select value={formData.service} onValueChange={(value) => handleChange("service", value)}>
-                    <SelectTrigger>
+                    <SelectTrigger data-testid="select-service">
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="wash-wax">Wash & Wax</SelectItem>
+                      <SelectItem value="premium-wash">Premium Wash</SelectItem>
+                      <SelectItem value="interior-detail">Interior Detail</SelectItem>
                       <SelectItem value="paint-correction">Paint Correction</SelectItem>
                       <SelectItem value="ceramic-coating">Ceramic Coating</SelectItem>
                       <SelectItem value="multiple">Multiple Services</SelectItem>
@@ -153,6 +177,7 @@ const Contact = () => {
                   <Label htmlFor="message">Message</Label>
                   <Textarea
                     id="message"
+                    data-testid="input-message"
                     placeholder="Tell us about your vehicle's condition and what you're looking to achieve..."
                     value={formData.message}
                     onChange={(e) => handleChange("message", e.target.value)}

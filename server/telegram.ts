@@ -7,7 +7,7 @@ interface TelegramMessage {
 interface ContactNotification {
   name: string;
   phone: string;
-  email: string;
+  email?: string;
   vehicle?: string;
   service?: string;
   message?: string;
@@ -73,7 +73,10 @@ function formatContactMessage(contact: ContactNotification): string {
   let message = `🚗 <b>Новая заявка - AK Detailing</b>\n\n`;
   message += `👤 <b>Клиент:</b> ${contact.name}\n`;
   message += `📱 <b>Телефон:</b> <a href="tel:${contact.phone}">${contact.phone}</a>\n`;
-  message += `📧 <b>Email:</b> ${contact.email}\n`;
+  
+  if (contact.email) {
+    message += `📧 <b>Email:</b> ${contact.email}\n`;
+  }
   
   if (contact.vehicle) {
     message += `🚙 <b>Автомобиль:</b> ${contact.vehicle}\n`;

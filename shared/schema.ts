@@ -7,7 +7,7 @@ export const contacts = pgTable("contacts", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   name: text("name").notNull(),
   phone: text("phone").notNull(),
-  email: text("email").notNull(),
+  email: text("email"),
   vehicle: text("vehicle"),
   service: text("service"),
   message: text("message"),

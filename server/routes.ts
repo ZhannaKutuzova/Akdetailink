@@ -8,8 +8,9 @@ import { sendTelegramNotification } from "./telegram";
 const contactFormSchema = z.object({
   name: z.string().min(1, "Name is required"),
   phone: z.string().min(1, "Phone is required"),
-  email: z.string().email("Valid email is required"),
-  vehicle: z.string().optional(),
+  email: z.string().optional(),
+  vehicleType: z.string().optional(),
+  vehicleMake: z.string().optional(),
   service: z.string().optional(),
   message: z.string().optional(),
   // Honeypot field - should be empty
@@ -79,17 +80,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       }
 
-      // Remove honeypot field before storing
-      const { website, ...contactData } = validatedData;
+      // Remove honeypot field and combine vehicle info before storing
+      const { website, vehicleType, vehicleMake, ...contactData } = validatedData;
+      
+      // Combine vehicle type and make into single field for database
+      const vehicle = [vehicleType, vehicleMake].filter(Boolean).join(" - ");
       
       // Store the contact submission
-      const contact = await storage.createContact(contactData);
+      const contact = await storage.createContact({
+        ...contactData,
+        vehicle: vehicle || undefined
+      });
       
       // Send Telegram notification
       await sendTelegramNotification({
         name: contact.name,
         phone: contact.phone,
-        email: contact.email,
+        email: contact.email || undefined,
         vehicle: contact.vehicle || undefined,
         service: contact.service || undefined,
         message: contact.message || undefined,
