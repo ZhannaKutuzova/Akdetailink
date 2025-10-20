@@ -22,6 +22,7 @@ import Pricing from "./pages/Pricing";
 import Gallery from "./pages/Gallery";
 import Reviews from "./pages/Reviews";
 import Contact from "./pages/Contact";
+import ThankYou from "./pages/ThankYou";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -44,6 +45,7 @@ function Router() {
           <Route path="/gallery" component={Gallery} />
           <Route path="/reviews" component={Reviews} />
           <Route path="/contact" component={Contact} />
+          <Route path="/thank-you" component={ThankYou} />
           <Route component={NotFound} />
         </Switch>
       </main>

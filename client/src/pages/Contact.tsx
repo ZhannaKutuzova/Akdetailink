@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -23,6 +24,7 @@ const Contact = () => {
     });
   }, []);
   const { toast } = useToast();
+  const [, setLocation] = useLocation();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -39,20 +41,8 @@ const Contact = () => {
       return await apiRequest("POST", "/api/contact", data);
     },
     onSuccess: () => {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for your inquiry! We will contact you soon.",
-      });
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        vehicleType: "",
-        vehicleMake: "",
-        service: "",
-        message: "",
-        website: ""
-      });
+      // Redirect to thank you page
+      setLocation("/thank-you");
     },
     onError: () => {
       toast({
