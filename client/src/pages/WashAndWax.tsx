@@ -4,10 +4,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
 import { SprayCan, Droplets, Shield, Sparkles, Star } from "lucide-react";
+import { updateMetaTags } from "@/lib/seo";
 
 const WashAndWax = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    updateMetaTags({
+      title: "Wash & Wax Las Vegas | Mobile Car Wash Service",
+      description: "Professional wash and wax in Las Vegas. Hand car wash with premium wax protection. Mobile service to Summerlin, Henderson. Call today!",
+      keywords: "wash and wax Las Vegas, hand car wash Las Vegas, mobile car wash Las Vegas, hand wash and wax, wax and seal Las Vegas, car wax for scratches, mobile wash and detail",
+      ogTitle: "Wash & Wax Las Vegas | Mobile Car Wash Service",
+      ogDescription: "Professional mobile wash and wax service in Las Vegas Valley. Premium car wax protection at your location."
+    });
   }, []);
   return (
     <div>

@@ -3,12 +3,71 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check, Star } from "lucide-react";
+import { updateMetaTags } from "@/lib/seo";
 
 export default function Pricing() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    updateMetaTags({
+      title: "Car Detailing Prices Las Vegas | Service Pricing",
+      description: "Transparent car detailing prices in Las Vegas. Paint correction, ceramic coating, interior detail pricing. Mobile service. Call today!",
+      keywords: "car detailing prices Las Vegas, how much is car detailing Las Vegas, paint correction price, car detailing deals Las Vegas, detailing Las Vegas, full detail Las Vegas, car detailing pricing",
+      ogTitle: "Car Detailing Prices Las Vegas | Service Pricing",
+      ogDescription: "View transparent pricing for mobile car detailing in Las Vegas. Paint correction, ceramic coating, and interior detailing."
+    });
   }, []);
   const services = [
+    {
+      name: "Wash & Wax",
+      description: "Professional exterior cleaning with protective wax application",
+      pricing: [
+        { vehicle: "Coupe", price: 80 },
+        { vehicle: "Sedan", price: 90, recommended: true },
+        { vehicle: "Van", price: 100 },
+        { vehicle: "Pickup", price: 100 },
+        { vehicle: "CUV/SUV", price: 110 }
+      ],
+      features: [
+        "Hand wash exterior",
+        "Premium wax application",
+        "Wheel & tire cleaning",
+        "Paint protection"
+      ]
+    },
+    {
+      name: "Premium Wash",
+      description: "Swirl-free hand washing using safe techniques",
+      pricing: [
+        { vehicle: "Coupe", price: 60 },
+        { vehicle: "Sedan", price: 70, recommended: true },
+        { vehicle: "Van", price: 80 },
+        { vehicle: "Pickup", price: 80 },
+        { vehicle: "CUV/SUV", price: 90 }
+      ],
+      features: [
+        "Two-bucket method",
+        "Microfiber wash mitts",
+        "Safe hand washing",
+        "Maintenance wash"
+      ]
+    },
+    {
+      name: "Interior Detail",
+      description: "Deep interior cleaning and restoration",
+      pricing: [
+        { vehicle: "Coupe", price: 150 },
+        { vehicle: "Sedan", price: 180, recommended: true },
+        { vehicle: "Van", price: 220 },
+        { vehicle: "Pickup", price: 200 },
+        { vehicle: "CUV/SUV", price: 220 }
+      ],
+      features: [
+        "Vacuum & deep clean",
+        "Leather conditioning",
+        "Stain removal",
+        "Odor elimination"
+      ]
+    },
     {
       name: "Touch Up Paint",
       description: "Professional chip and scratch repair",
@@ -72,41 +131,6 @@ export default function Pricing() {
         "Easy maintenance"
       ]
     },
-    {
-      name: "Interior Detailing",
-      description: "Deep cleaning and restoration of vehicle interior",
-      pricing: [
-        { vehicle: "Coupe", price: 200 },
-        { vehicle: "Sedan", price: 250, recommended: true },
-        { vehicle: "Van", price: 300 },
-        { vehicle: "Pickup", price: 300 },
-        { vehicle: "CUV/SUV", price: 300 }
-      ],
-      note: "Additional $50 for pet hair removal or stain treatment",
-      features: [
-        "Carpet & upholstery cleaning",
-        "Leather conditioning",
-        "Dashboard restoration",
-        "Window cleaning"
-      ]
-    },
-    {
-      name: "Exterior Wash & Tire Shine",
-      description: "Complete exterior cleaning with tire treatment",
-      pricing: [
-        { vehicle: "Coupe", price: 60 },
-        { vehicle: "Sedan", price: 80, recommended: true },
-        { vehicle: "Pickup", price: 80 },
-        { vehicle: "CUV/SUV", price: 90 },
-        { vehicle: "Van", price: 100 }
-      ],
-      features: [
-        "Hand wash",
-        "Wheel cleaning",
-        "Tire shine application",
-        "Exterior drying"
-      ]
-    }
   ];
 
   return (

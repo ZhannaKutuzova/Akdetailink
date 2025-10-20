@@ -5,10 +5,6 @@ const Footer = () => {
   const services = [
     { name: "Paint Correction", href: "/paint-correction" },
     { name: "Ceramic Coating", href: "/ceramic-coating" },
-    { name: "Interior Detail", href: "/interior-detail" },
-    { name: "Smoke Odor Removal", href: "/smoke-odor-removal" },
-    { name: "Wash & Wax", href: "/wash-and-wax" },
-    { name: "Premium Wash", href: "/premium-wash" },
   ];
 
   const serviceAreas = [

@@ -1,0 +1,50 @@
+╔════════════════════════════════════════════════════════╗
+║  AK DETAILING SERVICE - VERCEL DEPLOYMENT PACKAGE      ║
+╚════════════════════════════════════════════════════════╝
+
+📦 ЧТО ВНУТРИ ПАПКИ POPO:
+
+  ✅ client/          - Frontend (React + Vite)
+  ✅ server/          - Backend (Express)
+  ✅ shared/          - TypeScript типы
+  ✅ api/             - Serverless функции Vercel
+  ✅ migrations/      - Database migrations
+  ✅ package.json     - Зависимости проекта
+  ✅ vercel.json      - Конфигурация Vercel
+
+🚀 БЫСТРЫЙ СТАРТ:
+
+  1. Загрузить папку POPO на GitHub:
+     cd POPO
+     git init
+     git add .
+     git commit -m "Initial commit"
+     git remote add origin YOUR_REPO_URL
+     git push -u origin main
+
+  2. Зайти на vercel.com/new
+
+  3. Import Git Repository
+
+  4. Добавить Environment Variables:
+     - DATABASE_URL
+     - TELEGRAM_BOT_TOKEN
+     - TELEGRAM_CHAT_ID
+
+  5. Нажать Deploy!
+
+📖 ПОЛНАЯ ИНСТРУКЦИЯ:
+  
+  Откройте файл DEPLOY.md для подробной инструкции
+
+✅ ПРОВЕРОЧНЫЙ ЛИСТ:
+
+  Откройте файл CHECKLIST.md для проверки готовности
+
+📧 ПОДДЕРЖКА:
+
+  Email: akdetailingservislv@gmail.com
+  Phone: +1 (702) 518-6014
+
+════════════════════════════════════════════════════════════
+Версия: 1.0.0 | Октябрь 2025

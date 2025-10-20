@@ -5,10 +5,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Link } from "wouter";
 import { SprayCan, Search, Cog, Sparkles, Shield, CheckCircle, Star, MapPin, Car, Droplets, Ban } from "lucide-react";
+import { updateMetaTags } from "@/lib/seo";
 
 const PaintCorrection = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    updateMetaTags({
+      title: "Paint Correction Las Vegas | Scratch Removal Service",
+      description: "Paint correction in Las Vegas. Remove scratches, swirls, oxidation. 1-step & 2-step options. Mobile service. Call (702) 518-6014",
+      keywords: "paint correction Las Vegas, scratch removal car Las Vegas, buffing and polishing car, machine polish car, two step paint correction, one step polish Las Vegas, swirl removal Las Vegas, paint correction services, mobile paint correction, car scratch removal near me, remove scratches from car, oxidation removal car paint, wet sanding car paint, black car paint correction, professional car polishing near me, car paint restoration, paint restoration",
+      ogTitle: "Paint Correction Las Vegas | Scratch Removal Service",
+      ogDescription: "Expert paint correction and scratch removal in Las Vegas. Mobile service for swirl removal, buffing, and polishing."
+    });
   }, []);
   const processSteps = [
     {
@@ -87,24 +95,9 @@ const PaintCorrection = () => {
 
   const additionalServices = [
     {
-      icon: <Car className="w-8 h-8" />,
-      title: "Interior Detail",
-      description: "Deep clean carpets, seats, headliner, and leather surfaces to like-new condition."
-    },
-    {
-      icon: <Ban className="w-8 h-8" />,
-      title: "Smoke Odor Removal",
-      description: "Professional treatments to eliminate stubborn cigarette and tobacco odors."
-    },
-    {
       icon: <Shield className="w-8 h-8" />,
       title: "Ceramic Coating",
       description: "Long-lasting protective coating for ultimate paint protection and gloss."
-    },
-    {
-      icon: <SprayCan className="w-8 h-8" />,
-      title: "Wash & Wax",
-      description: "Premium hand wash and wax service for brilliant shine and protection."
     }
   ];
 
@@ -125,7 +118,7 @@ const PaintCorrection = () => {
               <div className="text-gray-700 space-y-4 text-lg leading-relaxed">
                 <p>Have you looked into your paint in the sun and seen a bunch of swirls marks, scratches, and even water spots? This is what can make your paint look dull and faded. Paint correction is when we remove those imperfections from your paint to reveal the ultimate gloss and clarity. And if you pair this with a <Link href="/ceramic-coating" className="text-primary hover:underline">ceramic coating</Link>, your car will look completely different.</p>
                 <p>How do we do this? By machine polishing your paint with multiple polishers, pads, compounds, and towels. This is what separates us in Las Vegas Valley versus other detailers. We don't just grab a rotary buffer, give you a "quick buff" and call it a day.</p>
-                <p>Instead, we inspect the paint, take a reading of your paint thickness, do multiple test spots to see what combination works best, and then carefully polish your paint. A great service for the exterior that doesn't require polishing would be our <Link href="/wash-and-wax" className="text-primary hover:underline">Wash and Wax service</Link>.</p>
+                <p>Instead, we inspect the paint, take a reading of your paint thickness, do multiple test spots to see what combination works best, and then carefully polish your paint.</p>
               </div>
             </div>
             <div>

@@ -9,16 +9,15 @@ import Footer from "./components/Footer";
 import LoadingSpinner from "./components/LoadingSpinner";
 import ExitIntentBanner from "./components/ExitIntentBanner";
 import Home from "./pages/Home";
+import WashAndWax from "./pages/WashAndWax";
+import PremiumWash from "./pages/PremiumWash";
+import InteriorDetail from "./pages/InteriorDetail";
 import PaintCorrection from "./pages/PaintCorrection";
 import CeramicCoating from "./pages/CeramicCoating";
-
-import InteriorDetail from "./pages/InteriorDetail";
+import SmokeOdorRemoval from "./pages/SmokeOdorRemoval";
 import FullInteriorDetail from "./pages/FullInteriorDetail";
 import InteriorRestoration from "./pages/InteriorRestoration";
 import PetHairRemoval from "./pages/PetHairRemoval";
-import SmokeOdorRemoval from "./pages/SmokeOdorRemoval";
-import WashAndWax from "./pages/WashAndWax";
-import PremiumWash from "./pages/PremiumWash";
 import Pricing from "./pages/Pricing";
 import Gallery from "./pages/Gallery";
 import Reviews from "./pages/Reviews";
@@ -32,16 +31,15 @@ function Router() {
       <main className="flex-1">
         <Switch>
           <Route path="/" component={Home} />
+          <Route path="/wash-and-wax" component={WashAndWax} />
+          <Route path="/premium-wash" component={PremiumWash} />
+          <Route path="/interior-detail" component={InteriorDetail} />
           <Route path="/paint-correction" component={PaintCorrection} />
           <Route path="/ceramic-coating" component={CeramicCoating} />
-
-          <Route path="/interior-detail" component={InteriorDetail} />
+          <Route path="/smoke-odor-removal" component={SmokeOdorRemoval} />
           <Route path="/full-interior-detail" component={FullInteriorDetail} />
           <Route path="/interior-restoration" component={InteriorRestoration} />
           <Route path="/pet-hair-removal" component={PetHairRemoval} />
-          <Route path="/smoke-odor-removal" component={SmokeOdorRemoval} />
-          <Route path="/wash-and-wax" component={WashAndWax} />
-          <Route path="/premium-wash" component={PremiumWash} />
           <Route path="/pricing" component={Pricing} />
           <Route path="/gallery" component={Gallery} />
           <Route path="/reviews" component={Reviews} />

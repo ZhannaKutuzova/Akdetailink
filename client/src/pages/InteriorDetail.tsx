@@ -4,10 +4,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
 import { Car, Sparkles, Clock, CheckCircle, Star } from "lucide-react";
+import { updateMetaTags } from "@/lib/seo";
 
 const InteriorDetail = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    updateMetaTags({
+      title: "Interior Detailing Las Vegas | Deep Clean & Shampoo",
+      description: "Interior detailing in Las Vegas. Deep clean, shampoo, odor removal, pet hair removal. Steam clean service. Mobile to your location!",
+      keywords: "interior deep clean car, car interior shampoo Las Vegas, car seat shampoo Las Vegas, steam clean car interior, pet hair removal car Las Vegas, stain removal car seats, odor removal car Las Vegas, smoke odor removal car Las Vegas, carpet shampoo car Las Vegas",
+      ogTitle: "Interior Detailing Las Vegas | Deep Clean Service",
+      ogDescription: "Professional interior detailing and deep cleaning in Las Vegas. Mobile service with odor removal, pet hair removal, and shampooing."
+    });
   }, []);
   return (
     <div>

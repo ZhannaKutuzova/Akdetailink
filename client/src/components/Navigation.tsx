@@ -10,13 +10,13 @@ const Navigation = () => {
 
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/paint-correction", label: "Paint Correction" },
-    { href: "/ceramic-coating", label: "Ceramic Coating" },
     { href: "/wash-and-wax", label: "Wash & Wax" },
     { href: "/premium-wash", label: "Premium Wash" },
     { href: "/interior-detail", label: "Interior Detail" },
-    { href: "/gallery", label: "Gallery" },
+    { href: "/paint-correction", label: "Paint Correction" },
+    { href: "/ceramic-coating", label: "Ceramic Coating" },
     { href: "/pricing", label: "Pricing" },
+    { href: "/gallery", label: "Gallery" },
     { href: "/reviews", label: "Reviews" },
   ];
 

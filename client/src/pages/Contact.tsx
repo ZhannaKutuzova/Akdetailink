@@ -9,10 +9,18 @@ import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { updateMetaTags } from "@/lib/seo";
 
 const Contact = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    updateMetaTags({
+      title: "Contact | Book Mobile Detailing Las Vegas",
+      description: "Contact AK Detailing for mobile car detailing in Las Vegas. Same day service. Serving Summerlin, Henderson. Call (702) 518-6014",
+      keywords: "book car detailing Las Vegas, mobile detailer near me, mobile detailing same day, same day mobile detailing, at home car detailing, on site car detailing, mobile detailer near Summerlin",
+      ogTitle: "Contact AK Detailing | Mobile Car Detailing Las Vegas",
+      ogDescription: "Book professional mobile car detailing in Las Vegas. Same day service available. Call (702) 518-6014 or request a quote."
+    });
   }, []);
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -136,10 +144,6 @@ const Contact = () => {
                     <SelectContent>
                       <SelectItem value="paint-correction">Paint Correction</SelectItem>
                       <SelectItem value="ceramic-coating">Ceramic Coating</SelectItem>
-                      <SelectItem value="interior-detail">Interior Detail</SelectItem>
-                      <SelectItem value="smoke-odor-removal">Smoke Odor Removal</SelectItem>
-                      <SelectItem value="wash-and-wax">Wash and Wax</SelectItem>
-                      <SelectItem value="premium-wash">Premium Wash</SelectItem>
                       <SelectItem value="multiple">Multiple Services</SelectItem>
                     </SelectContent>
                   </Select>

@@ -202,40 +202,6 @@ const SmokeOdorRemoval = () => {
         </div>
       </section>
 
-      {/* Add-On Services */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-secondary mb-12">Complete Your Transformation</h2>
-          <div className="text-center mb-8">
-            <p className="text-xl text-gray-700">You can add a Premium Wash or a Wash and Wax to freshen up the interior and exterior and give yourself that new-car feel.</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="text-center">
-              <CardHeader>
-                <CardTitle>Premium Wash</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Professional exterior hand wash to complement your fresh interior</p>
-                <Link href="/premium-wash">
-                  <Button className="mt-4 bg-primary hover:bg-primary/90 text-white">Learn More</Button>
-                </Link>
-              </CardContent>
-            </Card>
-            <Card className="text-center">
-              <CardHeader>
-                <CardTitle>Wash and Wax</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Complete exterior cleaning with protective wax coating</p>
-                <Link href="/wash-and-wax">
-                  <Button className="mt-4 bg-primary hover:bg-primary/90 text-white">Learn More</Button>
-                </Link>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Customer Reviews */}
       <section className="py-16 bg-muted">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -4,10 +4,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
 import { SprayCan, CheckCircle, Clock, Star } from "lucide-react";
+import { updateMetaTags } from "@/lib/seo";
 
 const PremiumWash = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    updateMetaTags({
+      title: "Premium Hand Wash Las Vegas | Swirl-Free Car Wash",
+      description: "Premium hand car wash in Las Vegas. Swirl-free washing with safe techniques. Mobile service to Summerlin, Henderson. Book today!",
+      keywords: "premium wash, hand car wash Las Vegas, mobile car wash Las Vegas, swirl removal Las Vegas, delicate body washing, car detailing Las Vegas",
+      ogTitle: "Premium Hand Wash Las Vegas | Swirl-Free Car Wash",
+      ogDescription: "Premium mobile hand wash service in Las Vegas. Safe, swirl-free washing at your location."
+    });
   }, []);
   return (
     <div>

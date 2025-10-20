@@ -3,13 +3,40 @@ import Hero from "@/components/Hero";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
-import { Car, Shield, Ban, Sparkles, SprayCan, Star } from "lucide-react";
+import { Car, Shield, Ban, Sparkles, SprayCan, Star, Droplets } from "lucide-react";
+import { updateMetaTags } from "@/lib/seo";
 
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    updateMetaTags({
+      title: "Mobile Car Detailing Las Vegas | AK Detailing Service",
+      description: "Professional mobile detailing in Las Vegas. Ceramic coating, paint correction, interior detailing. Same day service. Call (702) 518-6014",
+      keywords: "Las Vegas car detailing, mobile detailing Las Vegas, car detailing near me, mobile car wash Las Vegas, auto detailing Summerlin, mobile detailer near me, ceramic coating Las Vegas, paint correction Las Vegas, best car detailing Las Vegas, mobile auto detailing Las Vegas",
+      ogTitle: "Mobile Car Detailing Las Vegas | AK Detailing Service",
+      ogDescription: "Professional mobile car detailing in Las Vegas Valley. Ceramic coating, paint correction, interior detailing at your location.",
+      ogImage: "https://i.imgur.com/P6CFYey.png"
+    });
   }, []);
   const services = [
+    {
+      icon: <SprayCan className="w-8 h-8" />,
+      title: "Wash & Wax",
+      description: "Professional exterior cleaning with protective wax application for enhanced shine and paint protection.",
+      href: "/wash-and-wax"
+    },
+    {
+      icon: <Droplets className="w-8 h-8" />,
+      title: "Premium Wash",
+      description: "Swirl-free hand washing using safe techniques to maintain your vehicle's perfect finish.",
+      href: "/premium-wash"
+    },
+    {
+      icon: <Car className="w-8 h-8" />,
+      title: "Interior Detail",
+      description: "Deep interior cleaning to restore your car's interior to like-new condition with specialized treatments.",
+      href: "/interior-detail"
+    },
     {
       icon: <Sparkles className="w-8 h-8" />,
       title: "Paint Correction",
@@ -21,31 +48,6 @@ const Home = () => {
       title: "Ceramic Coating", 
       description: "A durable, multi-year protective layer that shields your paint from dirt and water while delivering an ultra-glossy, easy-to-clean finish",
       href: "/ceramic-coating"
-    },
-
-    {
-      icon: <Ban className="w-8 h-8" />,
-      title: "Smoke Odor Removal",
-      description: "Remove lingering smoke odor in your interior without specialized cleaning methods that target the source.",
-      href: "/smoke-odor-removal"
-    },
-    {
-      icon: <Car className="w-8 h-8" />,
-      title: "Interior Detail",
-      description: "A deep interior cleaning of the carpets, seats, plastics, and leather surfaces to eliminate stains and spills for a like-new interior.",
-      href: "/interior-detail"
-    },
-    {
-      icon: <SprayCan className="w-8 h-8" />,
-      title: "Wash and Wax",
-      description: "An exterior detail to cleanse your paint while adding a layer of shine and protection.",
-      href: "/wash-and-wax"
-    },
-    {
-      icon: <Sparkles className="w-8 h-8" />,
-      title: "Premium Wash",
-      description: "A swirl-free hand wash to keep your vehicle looking in top-shape shape.",
-      href: "/premium-wash"
     }
   ];
 
@@ -65,7 +67,7 @@ const Home = () => {
           <h2 className="text-4xl font-bold text-center text-secondary mb-12">
             Premium Detailing Services in Las Vegas Valley
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {services.map((service, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
                 <CardHeader className="text-center">

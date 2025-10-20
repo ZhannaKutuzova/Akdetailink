@@ -4,10 +4,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
 import { Shield, Droplets, Clock, Star } from "lucide-react";
+import { updateMetaTags } from "@/lib/seo";
 
 const CeramicCoating = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    updateMetaTags({
+      title: "Ceramic Coating Las Vegas | 3-9 Year Protection",
+      description: "Ceramic coating in Las Vegas. 3-9 year protection, graphene options. Mobile installer. Paint correction packages. Call (702) 518-6014",
+      keywords: "ceramic coating Las Vegas, ceramic coating Summerlin, mobile ceramic coating, ceramic coating installer Las Vegas, paint correction and ceramic coating, graphene coating Las Vegas, ceramic coating pro, ceramic 3-5 years protect, protect black color, ceramic coating and paint correction, paint correction ceramic coating",
+      ogTitle: "Ceramic Coating Las Vegas | 3-9 Year Protection",
+      ogDescription: "Professional ceramic coating services in Las Vegas. Multi-year paint protection with mobile installation."
+    });
   }, []);
   return (
     <div>

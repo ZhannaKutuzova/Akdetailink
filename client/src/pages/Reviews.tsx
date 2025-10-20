@@ -1,10 +1,18 @@
 import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import { updateMetaTags } from "@/lib/seo";
 
 export default function Reviews() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    updateMetaTags({
+      title: "Car Detailing Reviews Las Vegas | Testimonials",
+      description: "Read customer reviews for AK Detailing in Las Vegas. 5-star reviews from Summerlin, Henderson. Ceramic coating & paint correction.",
+      keywords: "car detailing Las Vegas, mobile detailing Las Vegas, ceramic coating Las Vegas, paint correction Las Vegas, best car detailing Las Vegas, auto detailing Summerlin",
+      ogTitle: "Car Detailing Reviews Las Vegas | 5-Star Testimonials",
+      ogDescription: "Read verified customer reviews for mobile car detailing in Las Vegas. Ceramic coating, paint correction testimonials."
+    });
   }, []);
   const testimonials = [
     {
@@ -29,32 +37,11 @@ export default function Reviews() {
       text: "AK Detailing Service transformed my car completely! The paint correction service removed years of swirl marks and scratches. My BMW looks brand new again. The mobile service was so convenient - they came right to my office in Henderson. Professional work and excellent customer service!"
     },
     {
-      name: "Sarah Johnson",
-      rating: 5,
-      location: "Summerlin",
-      service: "Interior Detail",
-      text: "Best detailing service in Las Vegas Valley! They detailed my SUV at my home in Summerlin. The interior cleaning was incredible - removed all stains and odors. My kids had made such a mess, but now it looks pristine. Will definitely use them again!"
-    },
-    {
       name: "David Chen",
       rating: 5,
       location: "Spring Valley",
       service: "Ceramic Coating",
       text: "Outstanding ceramic coating application! My Tesla Model S has never looked better. Water beads off perfectly and washing is so much easier now. The team was punctual, professional, and delivered exactly what they promised. Worth every dollar!"
-    },
-    {
-      name: "Jessica Martinez",
-      rating: 5,
-      location: "Las Vegas Valley",
-      service: "Smoke Odor Removal",
-      text: "Smoke odor removal service was a lifesaver! Bought a used car that smelled terrible from previous owner's smoking. AK Detailing completely eliminated the odor in just one session. Now my car smells fresh and clean. Highly recommend their services!"
-    },
-    {
-      name: "Robert Thompson",
-      rating: 5,
-      location: "Spring Valley",
-      service: "Premium Wash",
-      text: "Premium wash and wax service exceeded my expectations. They came to my house in Spring Valley and spent hours making my truck look amazing. The attention to detail is impressive - even cleaned areas I didn't think they would reach. Great value for the price!"
     },
     {
       name: "Amanda Wilson",
@@ -63,20 +50,6 @@ export default function Reviews() {
       service: "Paint Correction",
       text: "Paint correction on my luxury sedan was flawless. Years of parking garage scratches and swirl marks completely gone. The mobile service is so convenient - no need to drive anywhere or wait at a shop. Professional team and outstanding results!"
     },
-    {
-      name: "Carlos Mendez",
-      rating: 5,
-      location: "North Las Vegas",
-      service: "Wash and Wax",
-      text: "Excellent wash and wax service! My work truck looked terrible after months of construction jobs. AK Detailing made it look like new again. They were on time, professional, and the results speak for themselves. Definitely using them again!"
-    },
-    {
-      name: "Lisa Chang",
-      rating: 5,
-      location: "Henderson",
-      service: "Interior Detail",
-      text: "Interior detailing was phenomenal! Coffee stains, pet hair, and mysterious sticky spots - all gone! My car interior looks and smells brand new. The mobile service is so convenient, especially with my busy schedule. Highly recommend!"
-    }
   ];
 
   return (
