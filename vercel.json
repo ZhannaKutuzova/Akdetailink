@@ -1,26 +1,16 @@
 {
   "version": 2,
-  "buildCommand": "vite build",
+  "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
+  "functions": {
+    "api/*.ts": {
+      "maxDuration": 10
+    }
+  },
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api"
-    },
-    {
-      "source": "/healthz",
-      "destination": "/api"
-    },
-    {
-      "source": "/readyz",
-      "destination": "/api"
-    },
-    {
-      "source": "/((?!api|healthz|readyz).*)",
-      "destination": "/api"
+      "source": "/(.*)",
+      "destination": "/api/index"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
