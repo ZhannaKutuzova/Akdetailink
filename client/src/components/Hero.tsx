@@ -28,6 +28,11 @@ const Hero = ({
       />
       <div className="absolute inset-0 bg-black bg-opacity-40" />
       <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Discount Badge */}
+        <div className="inline-block bg-red-600 text-white px-6 py-2 rounded-full mb-4 sm:mb-6 text-sm sm:text-base md:text-lg font-bold animate-pulse shadow-lg">
+          🎉 SPECIAL OFFER: 30% OFF First Service!
+        </div>
+        
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 text-balance leading-tight">
           {title}
         </h1>

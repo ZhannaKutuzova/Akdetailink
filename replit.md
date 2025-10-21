@@ -3,7 +3,13 @@
 This is a mobile auto detailing business website for AK Detailing Service LLC, serving the Las Vegas Valley area. The application is a full-stack web application that showcases specialized car detailing services (paint correction and ceramic coating) and provides a contact form for customer inquiries. The site functions as a professional business website with service descriptions, pricing information, and lead generation capabilities.
 
 ## Recent Changes (October 2025)
-- **Thank You Page (Latest)**: Added post-submission confirmation page
+- **UI Improvements (Latest)**: Removed loading spinner and exit-intent popup
+  - Removed initial loading spinner for faster page load
+  - Removed exit-intent banner with discount popup
+  - Added prominent 30% OFF banner to Hero section on homepage
+  - Animated red badge with special offer message
+  - Cleaner, faster user experience
+- **Thank You Page**: Added post-submission confirmation page
   - Created ThankYou.tsx page with success confirmation design
   - Automatic redirect from contact form after successful submission
   - Quick contact options (Call Now, Email Us buttons)
@@ -30,7 +36,8 @@ This is a mobile auto detailing business website for AK Detailing Service LLC, s
 - **Service Areas**: Summerlin, Henderson, Spring Valley, Enterprise, Las Vegas Valley, North Las Vegas
 - **Hours**: Monday-Friday 8:00 AM - 7:00 PM, Saturday-Sunday 9:00 AM - 5:00 PM
 - **Social Media**: Instagram (@akdetailingservices), Facebook, WhatsApp, Telegram
-- **Features**: Mobile on-site service, Same-day completion
+- **Features**: Mobile on-site service, Same-day completion, 30% OFF First Service
+- **Promotions**: Special offer banner on homepage (30% OFF)
 
 # User Preferences
 

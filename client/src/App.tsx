@@ -3,11 +3,8 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { useState, useEffect } from "react";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
-import LoadingSpinner from "./components/LoadingSpinner";
-import ExitIntentBanner from "./components/ExitIntentBanner";
 import Home from "./pages/Home";
 import WashAndWax from "./pages/WashAndWax";
 import PremiumWash from "./pages/PremiumWash";
@@ -55,27 +52,11 @@ function Router() {
 }
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading time similar to Temu
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Router />
-        <ExitIntentBanner />
       </TooltipProvider>
     </QueryClientProvider>
   );
